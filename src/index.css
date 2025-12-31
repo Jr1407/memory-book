@@ -1,0 +1,277 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at top, #1b1f2a, #0a0d12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Playfair Display", serif;
+}
+
+.book-wrapper {
+  width: 1200px;
+  height: 520px;
+}
+
+/* PAGE BASE */
+.page {
+  background: #fff6df;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+/* LEFT / RIGHT */
+.left-page {
+  border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+.right-page {
+  border-left: 1px solid rgba(0,0,0,0.15);
+}
+
+/* COVER */
+.cover {
+  background: linear-gradient(135deg, #c97a6a, #f6c1cc);
+  color: #2b2b2b;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: 42px;
+}
+
+/* INTRO / OUTRO */
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* IMAGE */
+.image-bubble {
+  width: 200px;
+  height: 200px;
+
+  /* ✅ TRUE CENTERING */
+  margin: 40px auto;
+
+  border-radius: 50%;
+  background: #f7f0e2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  isolation: isolate;
+
+  box-shadow:
+    inset 0 0 0 10px rgba(255, 255, 255, 0.95),
+    0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* ✨ GOLDEN GLOW AROUND THE BUBBLE */
+.image-bubble::before {
+  content: "";
+  position: absolute;
+
+  /* EVEN CIRCULAR GLOW */
+  inset: -26px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 140, 0.65) 0%,   /* warm gold */
+    rgba(255, 190, 100, 0.45) 40%,  /* soft amber */
+    rgba(200, 150, 60, 0.25) 65%,   /* muted gold */
+    transparent 75%
+  );
+
+  filter: blur(18px);
+  z-index: 0;
+}
+/* 🌫️ SOFT FLOATING BUBBLE EFFECT */
+/* ✨ VISIBLE FLOATING BUBBLES */
+.image-bubble::after {
+  content: "";
+  position: absolute;
+  inset: -45px;
+  border-radius: 50%;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.45) 8%, transparent 9%),
+    radial-gradient(circle at 75% 25%, rgba(255, 240, 200, 0.4) 7%, transparent 8%),
+    radial-gradient(circle at 30% 75%, rgba(255, 255, 255, 0.35) 6%, transparent 7%),
+    radial-gradient(circle at 80% 70%, rgba(255, 230, 180, 0.3) 5%, transparent 6%);
+
+  filter: blur(0.5px);
+  animation: bubbleOrbit 10s linear infinite;
+  z-index: 2;
+}
+
+@keyframes bubbleOrbit {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.03);
+    opacity: 0.85;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.55;
+  }
+}
+
+
+
+.image-bubble img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  /* 🎯 FACE-CENTERED, NOT IMAGE-CENTERED */
+  object-position: center 8%;
+
+  position: relative;
+  z-index: 3;
+}
+
+
+
+/* TEXT */
+.text-area p {
+  font-size: 16px;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+/* BOOK DEPTH */
+.stf__wrapper {
+  perspective: 3000px;
+}
+/* 📖 BOOK-STYLE INNER MARGINS (ADD AT END) */
+
+/* ===== your existing CSS above ===== */
+
+
+/* ======================================================
+   BOOK-STYLE MARGIN DECORATION (ADD AT VERY END)
+====================================================== */
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1.5px solid rgba(170, 120, 80, 0.45);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(120,70,40,0.12), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(120,70,40,0.10), transparent 45%);
+  pointer-events: none;
+}
+
+.page .corner {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  opacity: 0.25;
+  pointer-events: none;
+  border: 1px solid rgba(150,100,70,0.6);
+}
+
+.page .corner.tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.page .corner.tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.page .corner.bl {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+
+.page .corner.br {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+/* =========================================
+   FIX: CLEAN COVER & INTRO VISIBILITY
+========================================= */
+
+/* remove page vignette from cover & intro */
+.cover::after,
+.intro::after,
+.outro::after {
+  display: none !important;
+}
+
+/* remove inner paper frame from cover */
+.cover::before {
+  opacity: 0.35; /* softer floral */
+}
+
+/* stop paper texture from stacking */
+.cover {
+  background-blend-mode: normal;
+}
+
+/* ensure cover text stays bright */
+.cover h1,
+.cover h2,
+.cover p {
+  position: relative;
+  z-index: 5;
+  color: #2b1b14;
+  text-shadow: 0 2px 6px rgba(255, 240, 220, 0.35);
+}
+/* =====================================
+   FINAL BOOK MARGINS — CLEAN & STABLE
+===================================== */
+
+.page {
+  position: relative;
+  padding: 42px 56px;
+}
+
+/* extra space near spine */
+.left-page {
+  padding-right: 72px;
+}
+
+.right-page {
+  padding-left: 72px;
+}
