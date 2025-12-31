@@ -46,7 +46,9 @@ was such a bliss momemnt for me.`
     image: "/images/june.jpg",
     text: `Internship month, full of joy,time ,small PNB visits, and we 
     kissed for the first time. Those Auto rides, closeness those 
-    moments were magical.`
+    moments were magical.The most important things it is my mammam's birthday month(28th June), 
+    that sweet little my misti turned 21 this year...many more best years to come, 
+    many more happiness to come into her life,hope she will stay healthy and safe and happy, amar misti mammam:)))) .`
   },
 
   {
